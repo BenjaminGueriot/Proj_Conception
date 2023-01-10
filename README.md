@@ -80,6 +80,10 @@ Depuis cette page, on peut voir l'avancement du module, les travaux à rendre po
 ---
 ## Utilisation
 
+Commencez par cloner le git
+
+Exécutez le fichier .java
+
 ---
 ### Crédits
 Projet conçu et élaboré par GONAY Arthur, GUERIOT Benjamin, NICOLAS Thomas, PACCOUD William, PRUVOST Jordan et TAKAHASHI Vincent
