@@ -22,7 +22,7 @@ Nous avons implémenté notre base de données avec phpMyAdmin en SQL.
 
 Nous avons réfléchit à un diagramme de classe qui servira de base à l'implémentation du code :
 
-*screen diagramme de classe*
+![Diagramme de classes](diagrammeClasse.png)
 
 Les diagrammes de cas d'utilisation nous permettront de définir le comportement de l'application en fonction des requêtes de l'utilisateur :
 
