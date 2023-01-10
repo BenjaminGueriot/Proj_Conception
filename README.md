@@ -30,10 +30,13 @@ Les diagrammes de cas d'utilisation nous permettront de définir le comportement
 ![Diagramme cas d'utilisation](useCase.png)
 
 
-Voici le diagramme de séquence qui va nous permettre de tracer le chemin des appels de fonction pour chaque requête de l'utilisateur :
+Voici les diagrammes de séquence qui vont nous permettre de tracer le chemin des appels de fonction pour chaque requête de l'utilisateur :
 
+Connection d'un utilisateur
 ![Diagramme de Séquence pour la connection](sequenceConnection.png)
 
+Consulter les cours de la semaine
+![Diagramme de Séquence pour la consultation des cours de la semaine](consulterCoursSemaine.png)
 
 ---
 ## Fonctionnalités
