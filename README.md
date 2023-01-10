@@ -58,7 +58,7 @@ Lors du lancement de l'application, vous devez vous connecter :
 
 Vous arrivez ensuite sur une page d'accueil :
 
-![Page d'accueil](pageAccueil.png)
+![Page d'accueil](ScreenAccueil.png)
 
 
 Nous pouvons voir sur cette fenêtre :
