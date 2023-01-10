@@ -20,7 +20,7 @@ Voici la maquette de l'application. Elle permet de visualiser les pages de l'app
 
 ### Modèle E/A
 
-Voici le modèle Entité-Association de la base de donnée liée à notre application, les cardinalités sont notés suivant la norme d'un MCD MERISE car le modèle a été utilisé pour générer le code sql de crétation de la BDD :
+Voici le modèle Entité-Association de la base de donnée liée à notre application, les cardinalitées sont notés suivant la norme d'un MCD MERISE car le modèle a été utilisé pour générer le code sql de crétation de la BDD :
 
 ![Modèle Entité Association](EntiteAssociation.png)
 
