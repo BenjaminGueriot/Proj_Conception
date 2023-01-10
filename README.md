@@ -135,21 +135,22 @@ Depuis cette page, on peut voir l'avancement du module en fonction du nombre de 
 
 Prérequis: 
 
--Avoir une base de données mysql
+- Avoir une base de données mysql et importer le fichier .sql fourni.
 
--Avoir Java à jour (version 61.O ou plus)
+- Avoir Java Runtime Environment à jour (version 17 ou plus).
 
 
 Lancement:
 
--Modifier les informations du fichier config.yml avec les informations de sa propre base de données.
+- Modifier les informations du fichier config.yml avec les informations de sa propre base de données.
 
--Ouvrir le dossier Application puis lancer Application.bat.
+- Ouvrir le dossier Application puis lancer Application.bat.
 
--Se connecter avec le login d'un des élèves de la BDD. Le mot de passe est crypté, pour tous les élèves le mot de passe est "test".
+- Se connecter avec le login d'un des élèves de la BDD. Le mot de passe est crypté, pour tous les élèves le mot de passe est "test".
 
-exemple: login --> gonaya
+exemple: 
 
+         login --> gonaya
          mdp --> test
 
 ---
