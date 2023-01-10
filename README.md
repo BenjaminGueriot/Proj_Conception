@@ -27,7 +27,7 @@ Nous avons réfléchit à un diagramme de classe qui servira de base à l'implé
 Les diagrammes de cas d'utilisation nous permettront de définir le comportement de l'application en fonction des requêtes de l'utilisateur :
 
 
-![Diagramme cas d'utilisation](diagramme_3_2-UseCase.drawio.png)
+![Diagramme cas d'utilisation](useCase.png)
 
 
 Voici le diagramme de séquence qui va nous permettre de tracer le chemin des appels de fonction pour chaque requête de l'utilisateur :
