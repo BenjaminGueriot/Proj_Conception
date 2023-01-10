@@ -10,13 +10,17 @@ Projet de conception d'une application destinée a aider les étudiants dans leu
 
 ---
 ## Conception
-La première étape du projet a été la conception préliminaire de l'application. Cela se traduit par un moment de réflexion sur l'application que nous voulons réaliser, avant de réaliser les diagrammes d'utilisation, d'état, Entité-Association,  de séquence et de classe ainsi que la maquette :
+La première étape du projet a été la conception préliminaire de l'application. Cela se traduit par un moment de réflexion sur l'application que nous voulons réaliser, avant de réaliser les diagrammes d'utilisation, d'état, Entité-Association,  de séquence et de classe ainsi que la maquette.
+
+Voici la maquette de l'application. Elle permet de visualiser les pages de l'application les liens entre celles-ci. Nous avons essayé d'avoir une page d'accueil avec le maximum d'info disponibles dans l'esprit d'un dashboard afin de rendre l'application plus ergonomique.
 
 ![Maquette de l'application](maquette.png)
 
 Voici le modèle Entité-Association de la base de donnée liée à notre application :
 
 ![Modèle Entité Association](EntiteAssociation.png)
+
+
 
 Nous avons implémenté notre base de données avec phpMyAdmin en SQL. 
 
