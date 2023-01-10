@@ -8,12 +8,12 @@ public abstract class Cour {
 
 	protected int num_seance;
 	protected Date date;
-	protected int heure_debut;
+	protected double heure_debut;
 	protected double duree;
 	protected Module module;
 	protected CourEnum courenum;
 	
-	public Cour(int num_seance, Date date, int heure_debut, double duree, Module module, CourEnum courenum) {
+	public Cour(int num_seance, Date date, double heure_debut, double duree, Module module, CourEnum courenum) {
 		super();
 		this.num_seance = num_seance;
 		this.date = date;
@@ -39,7 +39,7 @@ public abstract class Cour {
 		this.date = date;
 	}
 
-	public int getHeure_debut() {
+	public double getHeure_debut() {
 		return heure_debut;
 	}
 

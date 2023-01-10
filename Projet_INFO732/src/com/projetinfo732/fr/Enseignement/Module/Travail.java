@@ -1,7 +1,6 @@
 package com.projetinfo732.fr.Enseignement.Module;
 
 import java.util.Date;
-import com.projetinfo732.fr.Enseignement.Module.Module;
 
 public class Travail {
 
@@ -52,4 +51,3 @@ public class Travail {
 	
 	
 }
-

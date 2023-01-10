@@ -247,12 +247,14 @@ public class Initialize {
 		String QUERY = "SELECT * FROM filiere WHERE id_filiere = " + id_filiere + ";";
 		
 		String nom = null;
+		String description = null;
 		
 		try {
 			ResultSet rs = Main.database.querySQL(QUERY);
 			
 				while(rs.next()){
 					nom = rs.getString(2);
+					description = rs.getString(3);
 					
 				}
 			
@@ -313,6 +315,8 @@ public class Initialize {
 				InitializeUE_Filiere(filiere, id_filiere);
 				break;
 		}
+		
+		filiere.setDescription(description);
 		
 		return filiere;
 		
@@ -441,7 +445,7 @@ public class Initialize {
 			
 				while(rs.next()){
 					
-					cours_list.put(rs.getInt(1), new Object[] {rs.getInt(2), rs.getDate(3), rs.getInt(4), rs.getDouble(5), rs.getString(6)});
+					cours_list.put(rs.getInt(1), new Object[] {rs.getInt(2), rs.getDate(3), rs.getDouble(4), rs.getDouble(5), rs.getString(6)});
 					
 				}
 			
@@ -455,7 +459,7 @@ public class Initialize {
 			
 			int num_seance = (int) values[0];
 			Date date = (Date) values[1];
-			int heure_debut = (int) values[2];
+			double heure_debut = (double) values[2];
 			double duree = (double) values[3];
 			String type = (String) values[4];
 			
@@ -628,7 +632,6 @@ public class Initialize {
 				
 				if(module.getTravaux().contains(travail)) {
 					
-					
 					eleve.addNote(module, travail, res.get(travail)[0], res.get(travail)[1]);
 					
 				}
@@ -636,10 +639,6 @@ public class Initialize {
 			
 			
 		}
-			
-		
-		// ajouter note
-			
 		
 	}
 	

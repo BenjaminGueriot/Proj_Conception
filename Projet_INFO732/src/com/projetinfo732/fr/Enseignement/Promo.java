@@ -86,10 +86,13 @@ public class Promo {
 		
 		for(Eleve eleve : eleves) {
 			
-			sum += eleve.getNoteOfTravail(travail);
-			count++;
+			if(eleve.getNoteOfTravail(travail) != null) {
+				sum += (double) eleve.getNoteOfTravail(travail);
+				count++;
+			}
 			
 		}
+		
 		return sum / count;
 		
 	}

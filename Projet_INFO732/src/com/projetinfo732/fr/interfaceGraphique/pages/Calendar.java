@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import com.projetinfo732.fr.Enseignement.Module.Cour.Cour;
 import com.projetinfo732.fr.Personne.Eleve;
 
 import javafx.geometry.HPos;
@@ -45,23 +46,46 @@ public class Calendar extends Parent {
 		GridPane calendrier = new GridPane();
 		calendrier.setPrefSize(800,900);
 		calendrier.setPadding(new Insets(10, 0, 0, 0));
+		//calendrier.setGridLinesVisible(true);
+		//calendrier.gridLinesVisibleProperty();
 		
 		LocalDate today = LocalDate.now();
 		LocalDate debutSemaine = today.minusDays(today.getDayOfWeek().getValue() - 1) ;
 		LocalDate finSemaine = debutSemaine.plusDays(4);
 		
 		
-		HashMap<DayOfWeek, List<Object[]>> values = eleve.getPlanningOfWeek();
+		HashMap<DayOfWeek, HashMap<Cour,List<Object[]>>> values = eleve.getPlanningOfWeek();
+		
 		for(DayOfWeek day : values.keySet()) {
 			
-			for(Object[] obj : values.get(day)) {
-				
-				Emplacement emplacement = new Emplacement(day,(String) obj[1]);
-				timeSlots.add(emplacement);
-						
-				calendrier.add(emplacement.getView(), emplacement.getDayOfWeek().getValue(), (int) obj[0]+1);
+			HashMap<Cour,List<Object[]>> cour_values = values.get(day);
+			for(Cour cour : cour_values.keySet()) {
+				int count = 0;
+				for(Object[] obj : values.get(day).get(cour)) {
+					
+					Emplacement emplacement = new Emplacement(day,(String) obj[1]);
+					if(count == 0) {
+						emplacement.setEmplacementBorder(new Border(new BorderStroke(Color.BLACK, Color.BLACK, Color.BLACK, Color.BLACK,
+					            BorderStrokeStyle.SOLID, BorderStrokeStyle.SOLID, BorderStrokeStyle.NONE, BorderStrokeStyle.SOLID,
+					            CornerRadii.EMPTY, new BorderWidths(1), Insets.EMPTY)));
+					}
+					else if(count == values.get(day).get(cour).size()-1){
+						emplacement.setEmplacementBorder(new Border(new BorderStroke(Color.BLACK, Color.BLACK, Color.BLACK, Color.BLACK,
+					            BorderStrokeStyle.NONE, BorderStrokeStyle.SOLID, BorderStrokeStyle.SOLID, BorderStrokeStyle.SOLID,
+					            CornerRadii.EMPTY, new BorderWidths(1), Insets.EMPTY)));
+					}
+					else {
+						emplacement.setEmplacementBorder(new Border(new BorderStroke(Color.BLACK, Color.BLACK, Color.BLACK, Color.BLACK,
+					            BorderStrokeStyle.NONE, BorderStrokeStyle.SOLID, BorderStrokeStyle.NONE, BorderStrokeStyle.SOLID,
+					            CornerRadii.EMPTY, new BorderWidths(1), Insets.EMPTY)));
+					}
+					
+					timeSlots.add(emplacement);
+							
+					calendrier.add(emplacement.getView(), emplacement.getDayOfWeek().getValue(), (int) obj[0]+1);
+					count += 1;
+				}
 			}
-			
 		}
 		
 		//headers:
@@ -102,6 +126,7 @@ public static class Emplacement {
 		private final String description;
 	    private final DayOfWeek dayOfWeek;
 	    private final VBox view;
+	    private final Border border = null;
 		
 		public Emplacement(DayOfWeek dayOfWeek, String description) {
 			
@@ -111,10 +136,6 @@ public static class Emplacement {
 		        Label descriptionText = new Label(description);
 		        view.getChildren().add(descriptionText);
 		        view.setPrefSize(150,20);
-		        view.setStyle("-fx-border-color: black; -fx-border-width: 1;-fx-background-color: linear-gradient(to bottom, white, darkgray); ");
-		        view.setBorder(new Border(new BorderStroke(Color.RED, Color.RED, Color.RED, Color.RED,
-			            BorderStrokeStyle.SOLID, BorderStrokeStyle.SOLID, BorderStrokeStyle.NONE, BorderStrokeStyle.SOLID,
-			            CornerRadii.EMPTY, new BorderWidths(5), Insets.EMPTY)));
 		        view.setAlignment(Pos.CENTER);
 		    }
 			
@@ -124,6 +145,10 @@ public static class Emplacement {
 
 		    public Node getView() {
 		        return view;
+		    }
+		    
+		    public void setEmplacementBorder(Border border) {
+		    	this.view.setBorder(border);
 		    }
 		    
 		}

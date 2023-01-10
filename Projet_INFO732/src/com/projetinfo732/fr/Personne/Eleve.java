@@ -146,13 +146,18 @@ public class Eleve extends Personne {
 		this.promo = promo;
 	}
 
-	public double getNoteOfTravail(Travail travail) {
+	public Object getNoteOfTravail(Travail travail) {
 		
 		Module module = travail.getModule();
 		
-		double[] res = this.informations.get(module).get(travail);
+		if(this.informations.get(module).get(travail) != null) {
+			double[] res = this.informations.get(module).get(travail);
+			
+			return res[0];
+		}
 		
-		return res[0];
+		return null;
+		
 	}
 
 	public double getMeanOfUe(UE ue) {
@@ -191,19 +196,25 @@ public class Eleve extends Personne {
 		
 		HashMap<Travail, double[]> map = new HashMap<>();
 		
+		
 		for(Travail travail : getTravaux()) {
 			
 			Date date_travail = travail.getDate();
 			
 			Date now = new Date();
 			
-			
 			if (date_travail.before(now)) {
 				long diff = now.getTime() - date_travail.getTime();
 				long days = diff / (24 * 60 * 60 * 1000);
 				
 				if (days <= 7) {
-					map.put(travail, new double[] {this.informations.get(travail.getModule()).get(travail)[0], 					this.informations.get(travail.getModule()).get(travail)[1]});
+					
+					if(map.get(travail) != null) {
+
+						System.out.println(travail.getNom());
+						
+						map.put(travail, new double[] {this.informations.get(travail.getModule()).get(travail)[0], this.informations.get(travail.getModule()).get(travail)[1]});
+					}
 				}
 			}
 			
@@ -310,14 +321,14 @@ public class Eleve extends Personne {
 		return dates;
 	}
 	
-	@SuppressWarnings("null")
-	public HashMap<DayOfWeek, List<Object[]>> getPlanningOfWeek() {
+	public HashMap<DayOfWeek, HashMap<Cour, List<Object[]>>> getPlanningOfWeek() {
 		
-		  HashMap<DayOfWeek, List<Object[]>> map = new HashMap<>();
+		HashMap<DayOfWeek, HashMap<Cour, List<Object[]>>> map = new HashMap<>();
 		  
 		  for (Date date : getDaysOfWeek()) {
 		    for (Module module : getAllModules()) {
 		      for (Cour cour : module.getCours()) {
+		    	  
 		        Calendar cal1 = Calendar.getInstance();
 		        cal1.setTime(date);
 		        int year1 = cal1.get(Calendar.YEAR);
@@ -333,33 +344,26 @@ public class Eleve extends Personne {
 
 		        if (year1 == year2 && month1 == month2 && day1 == day2) {
 		          // Course is on the same day as the date
-		          int heure_debut = cour.getHeure_debut();
+		          double heure_debut = cour.getHeure_debut();
 		          
 		          double duree = cour.getDuree();
 		          
+		          int middle = (int) (duree / 2);
+		          
+		          double val = (heure_debut + middle);
+		          
 		          for(double i = heure_debut; i < heure_debut + duree; i+=0.5) {
-		        	  
-		        	  
-		        	  /*
-		        	   * 	8 : 0
-		        	   * 	8.5 : 1
-		        	   * 	9 : 2
-		        	   * 	9.5 : 3
-		        	   * 
-		        	   * 
-		        	   * 
-		        	   * 
-		        	   */
 		        	  
 		        	  int id = (int) ((i-8) * 2);
 		        	  
-		        	  String line = cour.getModule().getNom() + "\n" + cour.getCourenum().getNom();
+		        	  String line = "";
+		        	  
+		        	  if(((val - 8) * 2) == id) {
+		        		  line = cour.getModule().getNom() + "\n" + cour.getCourenum().getNom();
+		        		  
+		        	  } 
 		        	  
 		        	  Object[] values = new Object[] {id, line};
-		        	  
-		        	  
-		        	  
-		        	  
 		        	  
 		        	  DayOfWeek dayOfWeek = null;
 		        	  
@@ -387,19 +391,27 @@ public class Eleve extends Personne {
 							break;
 						}
 		        	  
-		        	  if(map.containsKey(dayOfWeek)) {
-		        		  
-		        		  List<Object[]> liste = map.get(dayOfWeek);
-		        		  liste.add(values);
-		        		  map.put(dayOfWeek, liste);
-		        		  
-		        	  } else {
-		        		  
-		        		  List<Object[]> liste = new ArrayList<>();
-		        		  liste.add(values);
-		        		  map.put(dayOfWeek, liste);
+		        	  
+		        	  if(!map.containsKey(dayOfWeek)){
+		        		  map.put(dayOfWeek, new HashMap<Cour, List<Object[]>>());
 		        	  }
 		        	  
+		        	  HashMap<Cour, List<Object[]>> res = map.get(dayOfWeek);
+		        	  
+		        	  if(res.containsKey(cour)) {
+		        		  
+		        		  List<Object[]> liste = map.get(dayOfWeek).get(cour);
+		        		  
+		        		  liste.add(values);
+		        		  res.put(cour, liste);
+		        		  
+		        	  } else {
+		        		  List<Object[]> liste = new ArrayList<>();
+		        		  liste.add(values);
+		        		  res.put(cour, liste);
+		        	  }
+		        	  
+		        	  map.put(dayOfWeek, res);
 		        	  
 		        	  
 		          }

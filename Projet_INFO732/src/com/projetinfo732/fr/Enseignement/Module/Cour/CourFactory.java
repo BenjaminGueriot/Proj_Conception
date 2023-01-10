@@ -6,6 +6,6 @@ import com.projetinfo732.fr.Enseignement.Module.Module;
 
 public interface CourFactory {
 	
-	Cour createCour(CourEnum cour_enum, int num_seance, Date date, int heure_debut, double duree, Module module);
+	Cour createCour(CourEnum cour_enum, int num_seance, Date date, double heure_debut, double duree, Module module);
 
 }

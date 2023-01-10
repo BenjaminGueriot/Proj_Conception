@@ -7,7 +7,7 @@ import com.projetinfo732.fr.Enseignement.Module.Module;
 public class CourFactoryImpl implements CourFactory {
 
 	@Override
-	public Cour createCour(CourEnum cour_enum, int num_seance, Date date, int heure_debut, double duree, Module module) {
+	public Cour createCour(CourEnum cour_enum, int num_seance, Date date, double heure_debut, double duree, Module module) {
 		
 		Cour cour = null;
 		switch (cour_enum) {
