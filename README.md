@@ -96,6 +96,10 @@ Nous pouvons aussi accéder à l'ensemble des notes de tous les modules, ainsi q
 
 ![Modules notes](modules.png)
 
+Enfin, nous pouvons accéder à notre compte en cliquant sur le nom de l'utilisateur : 
+
+![Mon compte](monCompte.png)
+
 Depuis cette page, on peut voir l'avancement du module en fonction du nombre de cours passés, les travaux à rendre pour chaque module, les notes et les moyennes de chaque module.
 
 ---
