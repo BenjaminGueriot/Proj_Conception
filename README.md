@@ -16,7 +16,7 @@ La première étape du projet a été la conception préliminaire de l'applicati
 
 Voici le modèle Entité-Association de la base de donnée liée à notre application :
 
-*screen Entité Association*
+![Modèle Entité Association](EntiteAssociation.png)
 
 Nous avons implémenté notre base de données avec phpMyAdmin en SQL. 
 
