@@ -52,9 +52,14 @@ Voici le diagramme d'état de notre application :
 
 ---
 ## Fonctionnalités
-Lors du lancement de l'application, vous arrivez sur cette fenêtre :
+Lors du lancement de l'application, vous devez vous connecter :
 
-*capture d'écran d'écran de la page d'accueil*
+![Page de connection](pageDeConnection.png)
+
+Vous arrivez ensuite sur une page d'accueil :
+
+![Page d'accueil](pageAccueil.png)
+
 
 Nous pouvons voir sur cette fenêtre :
  - le nom de l'élève et de la promo
@@ -68,7 +73,7 @@ A partir de cette page, nous pouvons accéder à l'emploi du temps généré à 
 
 Nous pouvons aussi accéder à l'ensemble des notes de tous les modules, ainsi que les moyennes :
 
-*screens des modules*
+![Modules notes](modules.png)
 
 Depuis cette page, on peut voir l'avancement du module, les travaux à rendre pour chaque module, les notes et les moyennes de chaque module.
 
