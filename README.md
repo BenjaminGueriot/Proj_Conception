@@ -64,7 +64,7 @@ Nous pouvons voir sur cette fenêtre :
 
 A partir de cette page, nous pouvons accéder à l'emploi du temps généré à partir de la base de donnée : 
 
-*screen de l"emploi du temps*
+![Emploi du temps](emploiDuTemps.png)
 
 Nous pouvons aussi accéder à l'ensemble des notes de tous les modules, ainsi que les moyennes :
 
