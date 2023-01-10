@@ -133,9 +133,24 @@ Depuis cette page, on peut voir l'avancement du module en fonction du nombre de 
 ---
 ## Utilisation
 
-Commencez par cloner le git
+Prérequis: 
 
-Exécutez le fichier Main.java
+-Avoir une base de données mysql
+
+-Avoir Java à jour (version 61.O ou plus)
+
+
+Lancement:
+
+-Modifier les informations du fichier config.yml avec les informations de sa propre base de données.
+
+-Ouvrir le dossier Application puis lancer Application.bat.
+
+-Se connecter avec le login d'un des élèves de la BDD. Le mot de passe est crypté, pour tous les élèves le mot de passe est "test".
+
+exemple: login --> gonaya
+
+         mdp --> test
 
 ---
 ### Crédits
