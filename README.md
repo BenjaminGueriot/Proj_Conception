@@ -24,6 +24,8 @@ Nous avons réfléchit à un diagramme de classe qui servira de base à l'implé
 
 ![Diagramme de classes](diagrammeClasse.png)
 
+A noter que la filière est une énum java donc une classe.
+
 Les diagrammes de cas d'utilisation nous permettront de définir le comportement de l'application en fonction des requêtes de l'utilisateur :
 
 
