@@ -65,6 +65,10 @@ Consulter les travaux à faire
 
 ![Diagramme de Séquence pour la consultation des travaux à faire](consulterTravailAFaire.png)
 
+Consulter les notes
+
+![Diagramme de Séquence pour la consultation des notes](consulterNotes.png)
+
 ### Diagramme d'états - transitions
 
 Voici le diagramme d'état de notre application, ce dernier nous aide à conceptualiser l'évolution des états de l'applications et donc des différents écrans à présenter à l'utilisateur :
