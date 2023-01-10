@@ -68,26 +68,26 @@ Les diagrammes de cas d'utilisation nous permettront de définir le comportement
 
 Voici les diagrammes de séquence qui vont nous permettre de tracer le chemin des appels de fonction pour chaque cas d'utilisation :
 
-Connection d'un utilisateur
+#### Connection d'un utilisateur
 
 ![Diagramme de Séquence pour la connection](sequenceConnection.png)
 
 L'utilisateur va demander à l'application de le connecter à l'aide d'un login et d'un mot de passe. Cette dernière va le connecter ou non selon la validité de ses identifiants.
 
-Consulter les cours de la semaine
+##### Consulter les cours de la semaine
 
 ![Diagramme de Séquence pour la consultation des cours de la semaine](consulterCoursSemaine.png)
 
 Pour obtenir ses cours de la semaine, l'élève utilisateur va d'abord se connecter puis obtenir depuis son objet Eleve les jours de la semaine. Pour chaque jour de la semaine, on récupère tous les modules suivis par l'élève. Pour chaque module, on récupère les cours de ce module. Pour chaque cours, on récupère la date du cours. Si le cours a lieu ce jour là, on l'ajoute à la liste des cours de la semaine. Après avoir loopé pour chaque jour, on retourne la liste des cours de la semaine.
 
-Consulter les travaux à faire
+##### Consulter les travaux à faire
 
 ![Diagramme de Séquence pour la consultation des travaux à faire](consulterTravailAFaire.png)
 
 Après connexion, l'utilisateur récupère l'ensemble de ses travaux avec son objet Eleve, puis pour chaque travaux on récupère sa date et on vérifie si le travail n'est pas passé. Si c'est le cas on l'ajoute à la liste des travaux de la semaine. A la fin, on retourne cette liste.
 
 
-Consulter les notes
+##### Consulter les notes
 
 ![Diagramme de Séquence pour la consultation des notes](consulterNotes.png)
 
