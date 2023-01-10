@@ -68,7 +68,7 @@ Les diagrammes de cas d'utilisation nous permettront de définir le comportement
 
 Voici les diagrammes de séquence qui vont nous permettre de tracer le chemin des appels de fonction pour chaque cas d'utilisation :
 
-#### Connection d'un utilisateur
+##### Connection d'un utilisateur
 
 ![Diagramme de Séquence pour la connection](sequenceConnection.png)
 
