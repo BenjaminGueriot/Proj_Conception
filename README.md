@@ -40,6 +40,10 @@ Consulter les cours de la semaine
 
 ![Diagramme de Séquence pour la consultation des cours de la semaine](consulterCoursSemaine.png)
 
+Consulter les travaux à faire
+
+![Diagramme de Séquence pour la consultation des travaux à faire](consulterTravailAFaire.png)
+
 ---
 ## Fonctionnalités
 Lors du lancement de l'application, vous arrivez sur cette fenêtre :
