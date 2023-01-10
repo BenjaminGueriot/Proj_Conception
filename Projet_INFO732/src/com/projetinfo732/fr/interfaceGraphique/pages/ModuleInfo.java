@@ -33,7 +33,7 @@ public class ModuleInfo extends Parent {
     	gridParent.setHgap(10);
         gridParent.setVgap(10);
         gridParent.setPadding(new Insets(10, 10, 10, 10));
-        gridParent.setPrefHeight(500);
+        gridParent.setPrefHeight(700);
         
         Button backButton = new Button("Back");
         backButton.setOnAction(event -> {

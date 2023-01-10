@@ -72,10 +72,10 @@ public class Promo {
 			sum += eleve.getMeanOfModule(module);
 			count++;
 			
-			//System.out.println(eleve.getAllModules());
-			
 		}
-		return sum / count;
+		double mean = sum / count;
+		
+		return Math.round(mean*100.0)/100.0;
 		
 	}
 	
@@ -91,9 +91,11 @@ public class Promo {
 				count++;
 			}
 			
+			
 		}
+		double mean = sum / count;
 		
-		return sum / count;
+		return Math.round(mean*100.0)/100.0;
 		
 	}
 	
@@ -108,7 +110,10 @@ public class Promo {
 			count++;
 			
 		}
-		return sum / count;
+		
+		double mean = sum / count;
+		
+		return Math.round(mean*100.0)/100.0;
 		
 	}
 	
@@ -125,7 +130,9 @@ public class Promo {
 			count++;
 			
 		}
-		return sum / count;
+		double mean = sum / count;
+		
+		return Math.round(mean*100.0)/100.0;
 		
 	}
 	

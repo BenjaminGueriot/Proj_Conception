@@ -18,6 +18,8 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.Border;
@@ -53,6 +55,19 @@ public class Calendar extends Parent {
 		LocalDate debutSemaine = today.minusDays(today.getDayOfWeek().getValue() - 1) ;
 		LocalDate finSemaine = debutSemaine.plusDays(4);
 		
+		 Button backButton = new Button("Back");
+	        backButton.setOnAction(event -> {
+	        	AccueilEleve accueilEleve = new AccueilEleve(primaryStage,eleve);
+	            Scene scene = new Scene(accueilEleve);
+	            scene.getStylesheets().add(getClass().getResource("css/accueil.css").toExternalForm());
+	            primaryStage.setScene(scene);
+	            primaryStage.show();
+	        });
+	
+	        // Add the back button to the top left corner of the root node
+	        calendrier.add(backButton,0,0);
+	        calendrier.setAlignment(Pos.TOP_LEFT);
+		
 		
 		HashMap<DayOfWeek, HashMap<Cour,List<Object[]>>> values = eleve.getPlanningOfWeek();
 		
@@ -63,7 +78,7 @@ public class Calendar extends Parent {
 				int count = 0;
 				for(Object[] obj : values.get(day).get(cour)) {
 					
-					Emplacement emplacement = new Emplacement(day,(String) obj[1]);
+					Emplacement emplacement = new Emplacement(day,(String) obj[1], cour.getModule().getCouleurEDT());
 					if(count == 0) {
 						emplacement.setEmplacementBorder(new Border(new BorderStroke(Color.BLACK, Color.BLACK, Color.BLACK, Color.BLACK,
 					            BorderStrokeStyle.SOLID, BorderStrokeStyle.SOLID, BorderStrokeStyle.NONE, BorderStrokeStyle.SOLID,
@@ -103,9 +118,7 @@ public class Calendar extends Parent {
 		
 		int slotIndex = 1 ;
 		DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("H:mm");
-		for (LocalDateTime startTime = today.atTime(heureMini);
-				! startTime.isAfter(today.atTime(heureMax));
-				startTime = startTime.plus(tempsSeparation)) {
+		for (LocalDateTime startTime = today.atTime(heureMini);!startTime.isAfter(today.atTime(heureMax)); startTime = startTime.plus(tempsSeparation)) {
 			Label label = new Label(startTime.format(timeFormatter));
 			label.setPadding(new Insets(0,0,20,0));
 			GridPane.setHalignment(label, HPos.RIGHT);
@@ -128,7 +141,7 @@ public static class Emplacement {
 	    private final VBox view;
 	    private final Border border = null;
 		
-		public Emplacement(DayOfWeek dayOfWeek, String description) {
+		public Emplacement(DayOfWeek dayOfWeek, String description,String color) {
 			
 		        this.dayOfWeek = dayOfWeek;
 		        this.description = description;
@@ -137,6 +150,7 @@ public static class Emplacement {
 		        view.getChildren().add(descriptionText);
 		        view.setPrefSize(150,20);
 		        view.setAlignment(Pos.CENTER);
+		        view.setStyle("-fx-background-color: " + color + ";");
 		    }
 			
 			public DayOfWeek getDayOfWeek() {

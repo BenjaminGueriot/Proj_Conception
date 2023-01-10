@@ -8,8 +8,10 @@ import com.projetinfo732.fr.Personne.Eleve;
 import com.projetinfo732.fr.utils.Initialize;
 
 import javafx.event.EventHandler;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -22,6 +24,7 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 
@@ -68,10 +71,33 @@ public class AccueilEleve extends Parent{
         ModuleText.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                // Load the next page
                 try {
                 	ModuleInfo moduleInfo = new ModuleInfo(primaryStage,eleve);
                     Scene scene = new Scene(moduleInfo);
+                    primaryStage.setScene(scene);
+                    primaryStage.show();
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+        
+        GridPane gridtitleright = new GridPane();
+        gridtitleright.setPadding(new Insets(0, 0, 0, 0));
+        
+        // Ajout Lien Module
+        Text PlanningText = new Text("Planning");
+        PlanningText.setId("PlanningText");
+        gridtitleright.add(PlanningText, 0, 0, 1, 1);
+        
+        PlanningText.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+            	try {
+
+                	Calendar c = new Calendar(primaryStage,eleve);
+                	
+                    Scene scene = new Scene(c);
                     primaryStage.setScene(scene);
                     primaryStage.show();
                 } catch (Exception ex) {
@@ -92,8 +118,12 @@ public class AccueilEleve extends Parent{
             primaryStage.show();
         });
         
-        gridParent.add(decoButton,10,0,1,1);
-        gridParent.setAlignment(Pos.TOP_RIGHT);
+        Text gap1 = new Text("            ");
+        gridtitleright.add(gap1, 1, 0, 1, 1);
+        
+        gridtitleright.add(decoButton,2,0,1,1);
+        decoButton.setAlignment(Pos.BOTTOM_RIGHT);
+        gridParent.add(gridtitleright,10,0,1,1);
         
         
         GridPane MoyenneGrid = new GridPane();
@@ -157,6 +187,7 @@ public class AccueilEleve extends Parent{
         GridPane SemaineGrid = new GridPane();
         SemaineGrid.setId("SemaineGrid");
         
+        
         Text gap = new Text("            ");
         SemaineGrid.add(gap, 0, 0, 1, 1);
         
@@ -175,26 +206,7 @@ public class AccueilEleve extends Parent{
 				break;
 		}
         
-        
         childGrid2.add(SemaineGrid, 1, 0, 1, 1);
-        
-        SemaineText.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                // Load the next page
-                try {
-
-                	Calendar c = new Calendar(primaryStage,eleve);
-                	
-                    Scene scene = new Scene(c);
-                    primaryStage.setScene(scene);
-                    primaryStage.show();
-                } catch (Exception ex) {
-                    ex.printStackTrace();
-                }
-            }
-        });
-
         GridPane childGrid3 = new GridPane();
         childGrid3.setHgap(10);
         childGrid3.setVgap(10);

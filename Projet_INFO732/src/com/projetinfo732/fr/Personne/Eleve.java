@@ -108,14 +108,20 @@ public class Eleve extends Personne {
 	public Double getGlobalMean() {
 		
 		double sum = 0.0;
-		double amount = 0.0;
+		double count = 0.0;
 		
 		for(Module module : getAllModules()){
-			sum += getMeanOfModule(module);
-			amount ++;
+			
+			if(getMeanOfModule(module) != null) {
+				sum += getMeanOfModule(module);
+				count ++;
+			}
+			
 		}
 		
-		return (sum/amount);
+		double mean = sum / count;
+		
+		return Math.round(mean*100.0)/100.0;
 	}
 
 	public Promo getPromo() {
@@ -150,14 +156,11 @@ public class Eleve extends Personne {
 		
 		Module module = travail.getModule();
 		
-		if(this.informations.get(module).get(travail) != null) {
-			double[] res = this.informations.get(module).get(travail);
-			
-			return res[0];
+		if( this.informations.get(module).get(travail) != null) {
+			return this.informations.get(module).get(travail)[0];
 		}
 		
 		return null;
-		
 	}
 
 	public double getMeanOfUe(UE ue) {
@@ -169,12 +172,16 @@ public class Eleve extends Personne {
 		
 		for(Module module : modules) {
 			
-			sum += getMeanOfModule(module);
-			count++;
+			if(getMeanOfModule(module) != null) {
+				sum += getMeanOfModule(module);
+				count++;
+			}
 			
 		}
 		
-		return sum / count;
+		double mean = sum / count;
+			
+		return Math.round(mean*100.0)/100.0;
 		
 	}
 	
@@ -196,12 +203,12 @@ public class Eleve extends Personne {
 		
 		HashMap<Travail, double[]> map = new HashMap<>();
 		
-		
 		for(Travail travail : getTravaux()) {
 			
 			Date date_travail = travail.getDate();
 			
 			Date now = new Date();
+			
 			
 			if (date_travail.before(now)) {
 				long diff = now.getTime() - date_travail.getTime();
@@ -209,12 +216,10 @@ public class Eleve extends Personne {
 				
 				if (days <= 7) {
 					
-					if(map.get(travail) != null) {
-
-						System.out.println(travail.getNom());
-						
-						map.put(travail, new double[] {this.informations.get(travail.getModule()).get(travail)[0], this.informations.get(travail.getModule()).get(travail)[1]});
+					if(this.informations.get(travail.getModule()).get(travail) != null) {
+						map.put(travail, new double[] {this.informations.get(travail.getModule()).get(travail)[0], 					this.informations.get(travail.getModule()).get(travail)[1]});
 					}
+					
 				}
 			}
 			
@@ -303,8 +308,6 @@ public class Eleve extends Personne {
 	
 	private List<Date> getDaysOfWeek(){
 		
-		//List<List<String>> res = new ArrayList<>();
-		
 		List<Date> dates = new ArrayList<>();
 		
 		Date monday = getLastMonday();
@@ -343,25 +346,30 @@ public class Eleve extends Personne {
 		        int day_number = cal2.get(Calendar.DAY_OF_WEEK);
 
 		        if (year1 == year2 && month1 == month2 && day1 == day2) {
-		          // Course is on the same day as the date
+		        	
 		          double heure_debut = cour.getHeure_debut();
 		          
 		          double duree = cour.getDuree();
 		          
 		          int middle = (int) (duree / 2);
 		          
-		          double val = (heure_debut + middle);
+		          double val = heure_debut + middle;
 		          
 		          for(double i = heure_debut; i < heure_debut + duree; i+=0.5) {
 		        	  
 		        	  int id = (int) ((i-8) * 2);
 		        	  
+		        	  
 		        	  String line = "";
+		        	  
+		        	  if(duree == 1.5) {
+		        		  val = heure_debut + 0.5;
+			          }
 		        	  
 		        	  if(((val - 8) * 2) == id) {
 		        		  line = cour.getModule().getNom() + "\n" + cour.getCourenum().getNom();
-		        		  
 		        	  } 
+		        	  
 		        	  
 		        	  Object[] values = new Object[] {id, line};
 		        	  

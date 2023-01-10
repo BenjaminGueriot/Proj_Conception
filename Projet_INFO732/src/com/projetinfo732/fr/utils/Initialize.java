@@ -96,22 +96,17 @@ public class Initialize {
 		
 		 try 
 		    {
-		      // Create MessageDigest instance for MD5
 		      MessageDigest md = MessageDigest.getInstance("MD5");
 
-		      // Add password bytes to digest
 		      md.update(passwordToHash.getBytes());
 
-		      // Get the hash's bytes
 		      byte[] bytes = md.digest();
 
-		      // This bytes[] has bytes in decimal format. Convert it to hexadecimal format
 		      StringBuilder sb = new StringBuilder();
 		      for (int i = 0; i < bytes.length; i++) {
 		        sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
 		      }
 
-		      // Get complete hashed password in hex format
 		      generatedPassword = sb.toString();
 		    } catch (NoSuchAlgorithmException e) {
 		      e.printStackTrace();
@@ -148,6 +143,8 @@ public class Initialize {
 		} catch (ClassNotFoundException | SQLException e) {
 			e.printStackTrace();
 		}
+		
+		ModuleColor.generateColors();
 		
 		Promo promo = InitializePromo(id_eleve, promo_id);
 		
@@ -317,6 +314,7 @@ public class Initialize {
 		}
 		
 		filiere.setDescription(description);
+		filiere.setNom(nom);
 		
 		return filiere;
 		
@@ -423,13 +421,28 @@ public class Initialize {
 			String nom = values[0];
 			String description = values[1];
 			
-			Module module = new Module(nom, description);
+			
+			String color = "";
+			
+			for(String c : ModuleColor.colors.keySet()) {
+				
+				if(!ModuleColor.colors.get(c)) {
+					
+					color = c;
+					ModuleColor.colors.put(c, true);
+					break;
+					
+				}
+				
+			}
+			
+			Module module = new Module(nom, description, color);
 			
 			ue.addModule(module);
 			
 			InitializeCour(module, id);
-			InitializeEnseigne(module);
-			InitializeTravail(id_ue, module);
+			InitializeEnseigne(id, module);
+			InitializeTravail(id, module);
 		}
 		
 	}
@@ -480,9 +493,9 @@ public class Initialize {
 		
 	}
 	
-	private static void InitializeEnseigne(Module module) {
+	private static void InitializeEnseigne(int id_module, Module module) {
 		
-		String QUERY = "SELECT id_enseignant FROM enseigne";
+		String QUERY = "SELECT id_enseignant FROM enseigne WHERE id_module = " + id_module + ";";
 		
 		List<Integer> liste_ids = new ArrayList<>();
 		
@@ -632,6 +645,7 @@ public class Initialize {
 				
 				if(module.getTravaux().contains(travail)) {
 					
+					
 					eleve.addNote(module, travail, res.get(travail)[0], res.get(travail)[1]);
 					
 				}
@@ -639,11 +653,9 @@ public class Initialize {
 			
 			
 		}
+			
 		
 	}
-	
-	
-	
 	
 	
 	

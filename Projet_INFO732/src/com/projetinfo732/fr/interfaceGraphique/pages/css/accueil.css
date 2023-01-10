@@ -8,7 +8,16 @@
 #ModuleText {
     -fx-font-size: 20px;
     -fx-font-weight: bold;
-    -fx-fill: blue;
+    -fx-fill: black;
+    -fx-underline: true;
+    -fx-cursor: hand;
+    -fx-font-family: 'Georgia', serif;
+}
+
+#PlanningText {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-fill: black;
     -fx-underline: true;
     -fx-cursor: hand;
     -fx-font-family: 'Georgia', serif;

@@ -11,13 +11,15 @@ public class Module {
 	
 	private String nom;
 	private String description;
+	private String couleurEDT;
 	private List<Enseignant> enseignants = new ArrayList<>();
 	private List<Travail> travaux = new ArrayList<>();
 	private List<Cour> cours = new ArrayList<>();
 	
-	public Module(String nom, String description) {
+	public Module(String nom, String description, String couleurEDT) {
 		this.nom = nom;
 		this.description = description;
+		this.couleurEDT = couleurEDT;
 	}
 	
 	public void addEnseignant(Enseignant enseignant) {
@@ -91,6 +93,14 @@ public class Module {
 
 	public void setCours(List<Cour> cours) {
 		this.cours = cours;
+	}
+
+	public String getCouleurEDT() {
+		return couleurEDT;
+	}
+
+	public void setCouleurEDT(String couleurEDT) {
+		this.couleurEDT = couleurEDT;
 	}
 	
 }
