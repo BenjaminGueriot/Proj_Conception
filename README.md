@@ -47,7 +47,7 @@ Nous avons implémenté notre base de données avec phpMyAdmin en SQL.
 
 Nous avons réfléchit à un diagramme de classe à partir de ces entités qui servira de base à l'implémentation du code, les cardinalités sont notés suivant la norme UML :
 
-![Diagramme de classes]([Images]/diagrammeClasse.png)
+![Diagramme de classes](Images/diagrammeClasse.png)
 
 A noter que `Fillière` est une énumération au sens Java, donc un type spécial de classe qui peut posséder des attributs comme une classe normale.
 
