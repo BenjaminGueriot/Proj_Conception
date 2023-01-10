@@ -32,7 +32,7 @@ Les diagrammes de cas d'utilisation nous permettront de définir le comportement
 
 Voici le diagramme de séquence qui va nous permettre de tracer le chemin des appels de fonction pour chaque requête de l'utilisateur :
 
-*screen diagramme de séquence*
+![Diagramme de Séquence pour la connection](sequenceConnection.png)
 
 
 ---
