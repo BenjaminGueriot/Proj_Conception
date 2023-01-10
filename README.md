@@ -60,4 +60,4 @@ Depuis cette page, on peut voir l'avancement du module, les travaux à rendre po
 
 ---
 ### Crédits
-Projet conçu et élaboré par GONAY Arthur, GUERIOT Benjamin, NICOLAS Thomas, PACCOUD William, PRUVOST Jordan et TAKAHASHI Vincent (c'te gros bg)
+Projet conçu et élaboré par GONAY Arthur, GUERIOT Benjamin, NICOLAS Thomas, PACCOUD William, PRUVOST Jordan et TAKAHASHI Vincent
