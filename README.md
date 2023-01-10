@@ -20,17 +20,32 @@ Voici la maquette de l'application. Elle permet de visualiser les pages de l'app
 
 ### Modèle E/A
 
-Voici le modèle Entité-Association de la base de donnée liée à notre application, les cardinalitées sont notés suivant la norme d'un MCD MERISE car le modèle a été utilisé pour générer le code sql de crétation de la BDD :
+Voici le modèle Entité-Association de la base de donnée liée à notre application, les cardinalitées sont notés suivant la norme d'un MCD MERISE car le modèle a été utilisé pour générer le code sql de création de la BDD :
 
 ![Modèle Entité Association](EntiteAssociation.png)
 
+Les entités fonctionnelles de notre application sont donc :
+- Ecole
+- Promo
+- Eleve
+- Travail
+- Note
+- Module
+- Cours
+- Filiere
+- UE
+- Enseignant
+
+Le principe de notre application est donc le suivant :
+L'école contient des promos. Une promo correspond à une filière (IDU3, MM4, PEIP1...) et une année, exemple : IDU3 de 2022. Une filière contient des UE qui sont composés de modules. Un module est composé de différents cours, et un module peut être suivi par plusieurs filières.
+Un élève appartient à une promo qui contient plusieurs élèves. Chaque élève possède plusieurs notes qui sont associées à un travail. Un travail s'inscrit dans un module et est préparé par un enseignant. Un enseignant enseigne un ou plusieurs modules.
 
 
 Nous avons implémenté notre base de données avec phpMyAdmin en SQL. 
 
 ### Diagramme de classes
 
-Nous avons réfléchit à un diagramme de classe qui servira de base à l'implémentation du code, les cardinalités sont notés suivant la norme UML :
+Nous avons réfléchit à un diagramme de classe à partir de ces entités qui servira de base à l'implémentation du code, les cardinalités sont notés suivant la norme UML :
 
 ![Diagramme de classes](diagrammeClasse.png)
 
@@ -57,17 +72,26 @@ Connection d'un utilisateur
 
 ![Diagramme de Séquence pour la connection](sequenceConnection.png)
 
+L'utilisateur va demander à l'application de le connecter à l'aide d'un login et d'un mot de passe. Cette dernière va le connecter ou non selon la validité de ses identifiants.
+
 Consulter les cours de la semaine
 
 ![Diagramme de Séquence pour la consultation des cours de la semaine](consulterCoursSemaine.png)
+
+Pour obtenir ses cours de la semaine, l'élève utilisateur va d'abord se connecter puis obtenir depuis son objet Eleve les jours de la semaine. Pour chaque jour de la semaine, on récupère tous les modules suivis par l'élève. Pour chaque module, on récupère les cours de ce module. Pour chaque cours, on récupère la date du cours. Si le cours a lieu ce jour là, on l'ajoute à la liste des cours de la semaine. Après avoir loopé pour chaque jour, on retourne la liste des cours de la semaine.
 
 Consulter les travaux à faire
 
 ![Diagramme de Séquence pour la consultation des travaux à faire](consulterTravailAFaire.png)
 
+Après connexion, l'utilisateur récupère l'ensemble de ses travaux avec son objet Eleve, puis pour chaque travaux on récupère sa date et on vérifie si le travail n'est pas passé. Si c'est le cas on l'ajoute à la liste des travaux de la semaine. A la fin, on retourne cette liste.
+
+
 Consulter les notes
 
 ![Diagramme de Séquence pour la consultation des notes](consulterNotes.png)
+
+Les notes sont stockées dans l'attribut informations de l'objet Eleve, donc il suffit de retourner cet attribut.
 
 ### Diagramme d'états - transitions
 
