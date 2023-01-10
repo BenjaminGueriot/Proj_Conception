@@ -24,7 +24,7 @@ Nous avons réfléchit à un diagramme de classe qui servira de base à l'implé
 
 *screen diagramme de classe*
 
-Voici le diagrammes de cas d'utilisation qui nous permettra de définir le comportement de l'application en fonction des requêtes de l'utilisateur :
+Les diagrammes de cas d'utilisation nous permettront de définir le comportement de l'application en fonction des requêtes de l'utilisateur :
 
 
 ![Diagramme cas d'utilisation](diagramme_3_2-UseCase.drawio.png)
