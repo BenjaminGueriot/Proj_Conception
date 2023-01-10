@@ -10,7 +10,7 @@ Projet de conception d'une application destinée a aider les étudiants dans leu
 
 ---
 ## Conception
-La première étape du projet a été la conception préliminaire de l'application. Cela se traduit par un moment de réflexion sur l'application que nous voulons réaliser, avant de réaliser les diagrammes d'utilisation, Entité-Association,  de séquence et de classe ainsi que la maquette.
+La première étape du projet a été la conception préliminaire de l'application. Cela se traduit par un moment de réflexion sur l'application que nous voulons réaliser, avant de réaliser les diagrammes d'utilisation, d'état, Entité-Association,  de séquence et de classe ainsi que la maquette.
 
 *screen maquette*
 
@@ -43,6 +43,10 @@ Consulter les cours de la semaine
 Consulter les travaux à faire
 
 ![Diagramme de Séquence pour la consultation des travaux à faire](consulterTravailAFaire.png)
+
+Voici le diagramme d'état de notre application :
+
+![Diagramme d'état](diagrammeEtat.png)
 
 ---
 ## Fonctionnalités
