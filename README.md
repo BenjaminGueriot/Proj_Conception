@@ -68,9 +68,9 @@ Les diagrammes de cas d'utilisation nous permettront de définir le comportement
 
 Voici les diagrammes de séquence qui vont nous permettre de tracer le chemin des appels de fonction pour chaque cas d'utilisation :
 
-##### Connection d'un utilisateur
+##### Connexion d'un utilisateur
 
-![Diagramme de Séquence pour la connection](Images/sequenceConnection.png)
+![Diagramme de Séquence pour la connexion](Images/sequenceConnection.png)
 
 L'utilisateur va demander à l'application de le connecter à l'aide d'un login et d'un mot de passe. Cette dernière va le connecter ou non selon la validité de ses identifiants.
 
